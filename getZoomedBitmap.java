@@ -11,7 +11,7 @@
             bmp.setDensity(Bitmap.DENSITY_NONE);
 
             //Set the default values in case of bad input
-            zoomScale = (zoomScale < 0.0f || zoomScale > 10.0f) ? 2.0f : zoomScale;
+            zoomScale = (zoomScale < 0.0f || zoomScale > 100.0f) ? 2.0f : zoomScale;
             xPercentage = (xPercentage < 0.0f || xPercentage > 100.0f) ? 50.0f : xPercentage;
             yPercentage = (yPercentage < 0.0f || yPercentage > 100.0f) ? 50.0f : yPercentage;
 
