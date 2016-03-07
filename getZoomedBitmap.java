@@ -11,20 +11,20 @@
             bmp.setDensity(Bitmap.DENSITY_NONE);
 
             //Set the default values in case of bad input
-            zoomScale = (zoomScale < 0.0f || zoomScale > 100.0f) ? 2.0f : zoomScale;
+            zoomScale = (zoomScale < 0.0f || zoomScale > 10.0f) ? 2.0f : zoomScale;
             xPercentage = (xPercentage < 0.0f || xPercentage > 100.0f) ? 50.0f : xPercentage;
             yPercentage = (yPercentage < 0.0f || yPercentage > 100.0f) ? 50.0f : yPercentage;
 
-            int originalWidth = bmp.getWidth();
-            int originalHeight = bmp.getHeight();
+            float originalWidth = bmp.getWidth();
+            float originalHeight = bmp.getHeight();
 
             //Get the new sizes based on zoomScale
-            int newWidth = (int) (originalWidth / zoomScale);
-            int newHeight = (int) (originalHeight / zoomScale);
+            float newWidth = originalWidth / zoomScale;
+            float newHeight = originalHeight / zoomScale;
 
             //get the new X/Y positions based on x/yPercentage
-            int newX = (int) (originalWidth * xPercentage / 100) - newWidth / 2;
-            int newY = (int) (originalHeight * yPercentage / 100) - newHeight / 2;
+            float newX = (originalWidth * xPercentage / 100) - (newWidth / 2);
+            float newY = (originalHeight * yPercentage / 100) - (newHeight / 2);
 
             //Make sure the x/y values are not lower than 0
             newX = (newX < 0) ? 0 : newX;
@@ -40,7 +40,7 @@
                 newY -= 2;
             }
 
-            return Bitmap.createBitmap(bmp, newX, newY, newWidth, newHeight);
+            return Bitmap.createBitmap(bmp, Math.round(newX), Math.round(newY), Math.round(newWidth), Math.round(newHeight));
         }
 
         return null;
